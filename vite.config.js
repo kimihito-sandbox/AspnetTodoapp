@@ -5,7 +5,7 @@ export default defineConfig({
   root: './Assets',
   build: {
     outDir: '../wwwroot',
-    manifest: true,
+    manifest: "manifest.json",
     rollupOptions: {
       input: './Assets/main.js',
     },

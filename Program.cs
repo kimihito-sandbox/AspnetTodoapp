@@ -4,7 +4,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddViteServices();
+builder.Services.AddViteServices(options =>
+{
+  options.Manifest = "manifest.json";
+}
+);
 
 var app = builder.Build();
 

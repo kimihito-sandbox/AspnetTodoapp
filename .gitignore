@@ -484,4 +484,4 @@ $RECYCLE.BIN/
 .serena
 
 wwwroot/assets
-wwwroot/.vite
+wwwroot/manifest.json
