@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using AspnetTodoapp.Models;
+using Htmx;
 
 namespace AspnetTodoapp.Controllers;
 
@@ -13,8 +14,14 @@ public class HomeController : Controller
         return View();
     }
 
+    [Route("/privacy")]
+    [HttpGet]
     public IActionResult Privacy()
     {
+        if (Request.IsHtmx())
+        {
+            return PartialView();
+        }
         return View();
     }
 
