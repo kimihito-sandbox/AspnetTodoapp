@@ -1,2 +1,3 @@
 @import "tailwindcss";
-@source "../Views//**/*.cshtml";
+@plugin "daisyui";
+@source "../Views/**/*.cshtml";
