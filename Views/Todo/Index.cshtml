@@ -1,0 +1,22 @@
+@model List<AspnetTodoapp.Models.Todo>
+
+<h1 class="text-2xl font-bold mb-4">Todo リスト</h1>
+
+<ul class="space-y-2">
+  @foreach (Todo todo in Model)
+  {
+    <li class="p-4 bg-white rounded shadow">
+      <div class="flex justify-between items-center">
+        <span class="text-lg">@todo.Title</span>
+        @if (todo.IsCompleted)
+        {
+          <span class="text-green-500 font-semibold">完了</span>
+        }
+        else
+        {
+          <span class="text-red-500 font-semibold">未完了</span>
+        }
+      </div>
+    </li>
+  }
+</ul>

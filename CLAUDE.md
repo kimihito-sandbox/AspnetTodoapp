@@ -130,3 +130,12 @@ The application uses a dual-mode approach for frontend assets:
 - All views use `_Layout.cshtml` as the default layout (configured in `_ViewStart.cshtml`)
 - Tag Helpers are enabled globally via `_ViewImports.cshtml`
 - Vite tag helpers handle asset references in development and production
+
+## AI Assistant Instructions
+
+This is a learning project for studying ASP.NET Core. When the user asks for code changes:
+
+1. **Show the code, don't write it** - Provide code snippets for the user to type themselves (写経 style)
+2. **Explain what each part does** - Help the user understand the concepts
+3. **Answer questions patiently** - The user is learning, so explain terminology and patterns
+4. **Suggest next steps** - Guide the learning process incrementally

@@ -1,3 +1,5 @@
+using AspnetTodoapp.Data;
+using Microsoft.EntityFrameworkCore;
 using Vite.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddViteServices();
+
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite("Data Source=db.sqlite3"));
 
 var app = builder.Build();
 
@@ -30,5 +34,13 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+if (app.Environment.IsDevelopment())
+{
+  using (var scope = app.Services.CreateScope())
+  {
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    DbInitializer.Seed(context);
+  }
+}
 
 app.Run();
