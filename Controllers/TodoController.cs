@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Htmx;
+using AspnetTodoapp.Models;
 using AspnetTodoapp.Data;
 
 namespace AspnetTodoapp.Controllers;
@@ -23,5 +24,34 @@ public class TodoController : Controller
             return PartialView(todos);
         }
         return View(todos);
+    }
+
+    [Route("/todos/new")]
+    [HttpGet]
+    public IActionResult New()
+    {
+      return View();
+    }
+
+    [Route("/todos")]
+    [HttpPost]
+    public IActionResult Create(string title)
+    {
+      if(string.IsNullOrWhiteSpace(title))
+      {
+        return RedirectToAction(nameof(Index));
+      }
+
+      var todo = new Todo
+      {
+        Title = title,
+        IsCompleted = false
+      };
+
+      _context.Todos.Add(todo);
+      _context.SaveChanges();
+
+      return RedirectToAction(nameof(Index));
+
     }
 }
