@@ -35,16 +35,17 @@ public class TodoController : Controller
 
     [Route("/todos")]
     [HttpPost]
-    public IActionResult Create(string title)
+    public IActionResult Create(CreateTodoRequest request)
     {
-      if(string.IsNullOrWhiteSpace(title))
+
+      if (!ModelState.IsValid)
       {
-        return RedirectToAction(nameof(Index));
+        return View(nameof(New), request);
       }
 
       var todo = new Todo
       {
-        Title = title,
+        Title = request.Title,
         IsCompleted = false
       };
 

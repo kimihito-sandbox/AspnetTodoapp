@@ -1,11 +1,15 @@
 using AspnetTodoapp.Data;
 using Microsoft.EntityFrameworkCore;
 using Vite.AspNetCore;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 builder.Services.AddViteServices();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite("Data Source=db.sqlite3"));
