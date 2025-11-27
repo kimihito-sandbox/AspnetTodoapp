@@ -1,0 +1,17 @@
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@model AspnetTodoapp.Models.Todo
+
+<li class="p-4 bg-white rounded shadow">
+  <div class="flex justify-between items-center">
+    <span class="text-lg">@Model.Title</span>
+    <p class="text-red-500 text-xs">DEBUG: @ViewData["Debug"]</p>
+    @if (Model.IsCompleted)
+    {
+      <span class="text-green-500 font-semibold">完了</span>
+    }
+    else
+    {
+      <span class="text-red-500 font-semibold">未完了</span>
+    }
+  </div>
+</li>
